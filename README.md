@@ -10,16 +10,11 @@ This project may take between 15 to 30 hours, depending on the complexity you're
 
 ### Objective
 
-I've chosen to build this specific device as I consider it beguinner friendly, 
+I've chosen to build this specific device as I consider it beguinner friendly, fairly simple to develop and quite useful for anyone. I decided against any device that used sensors and instead aimed for a project in which I knew I would use even after this course was completed and would remain useful to me even long after. I could have aimed for a project that used basic sensors and displayed the data, however, I found the idea of developing something fairly different and still remain simple quite appealing. As such, I consider this device to still fulfill the basic requirements of this course while providing an alternative for anyone interested in a project that does not use sensors. 
 
+The aim of this device is to track productivity using the pomodoro technique, in a way, this device functions as a timer free of distractions, while providing a set of data for its user. The data shall be displayed in a Google sheets document where the user will be able to obtain all the time intervals that have been completed, along the current date and time of such intervals. 
 
-
-
-Describe why you have chosen to build this specific device. What purpose does it serve? What do you want to do with the data, and what new insights do you think it will give?
-
-- [ ] Why you chose the project
-- [ ] What purpose does it serve
-- [ ] What insights you think it will give
+While fairly simple, I believe this device can provide insight on the productivity of its user, giving way to how long the user has been working as well as all the pauses activated during such intervals. If used correctly, this device culd suit anyone who's aiming at improving productivity and reduce any forms of distraction. 
 
 ### Material
 
