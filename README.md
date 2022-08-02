@@ -10,6 +10,11 @@ This project may take between 15 to 30 hours, depending on the complexity you're
 
 ### Objective
 
+I've chosen to build this specific device as I consider it beguinner friendly, 
+
+
+
+
 Describe why you have chosen to build this specific device. What purpose does it serve? What do you want to do with the data, and what new insights do you think it will give?
 
 - [ ] Why you chose the project
@@ -17,6 +22,8 @@ Describe why you have chosen to build this specific device. What purpose does it
 - [ ] What insights you think it will give
 
 ### Material
+
+For this project I've chosen a Freenove ESP32 board, with a GPIO extension board added to it. I've chosen this specific device as it provides all the perks of a generic ESP32 board with the addition of free resources provided by Freenove, additionally, as it comes with an extension board built-in, this specific board makes any kind of setup far easier and less troublesome, with no soldering required and no confusing setup compared to other boards (see pycom expansion boards), I considering this board to be highly beguinner friendly, with a range of tutorials and projects already provided by Freenove for free. As a side note, this board is compatible to the firmware provided by the course, as well as the firmware used in ESP32 boards by Espressif. 
 
 Explain all material that is needed. All sensors, where you bought them and their specifications. Please also provide pictures of what you have bought and what you are using.
 
