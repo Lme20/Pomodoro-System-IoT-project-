@@ -83,9 +83,18 @@ You can start by uploading dummy code just to make sure the PIO upload works as 
 
 ### Putting everything together
 
-How is all the electronics connected? Describe all the wiring, good if you can show a circuit diagram. Be specific on how to connect everything, and what to think of in terms of resistors, current and voltage. Is this only for a development setup or could it be used in production?
+![This is an image](https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/192c416b52e20fab869704951836ff95480a2160/assets/sketch_pomodoro_bb.png)
 
-- [ ] Circuit diagram (can be hand drawn)
+All GPIO connections are made in pin 13, 15, 2, 4 and 21 whereas 15, 2, 4 are exclusively related to the RBG led light. The extension board allows for a well connected breadboard which makes the setup process easier to manage. 
+
+
+
+- How is all the electronics connected? 
+- Describe all the wiring, 
+- Be specific on how to connect everything, 
+- what to think of in terms of resistors, current and voltage.
+- Is this only for a development setup or could it be used in production?
+
 - [ ] *Electrical calculations
 
 ### Platform
