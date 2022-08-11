@@ -43,9 +43,53 @@ Link here: [Freenove Ultimate starter kit](https://www.amazon.se/Freenove-Ultima
 
 ### Computer setup
 
-How is the device programmed. Which IDE are you using. Describe all steps from flashing the firmware, installing plugins in your favorite editor. How flashing is done on MicroPython. The aim is that a beginner should be able to understand.
+For this project I've stuck with Atom IDE, as it provides all the necessary plugins for this project. You should first start by installing Atom IDE if you haven't already. 
 
-- [ ] Chosen IDE
+#### Flashing the firmware and required setup
+
+First of all, you will need to flash the required firmware to your ESP32 board, for this you will need to access this **[website](https://nabucasa.github.io/esp-web-flasher/)** and download the specified **[firmware](https://github.com/H-Ryan/Heltec/blob/main/PyCom%20MicroPython/Heltec%20PyCom%20MicroPython.zip?raw=trueS)** in your computer, do this by first connecting your ESP32 board to your computer (use the USB cable provided in the kit), make sure your computer detects the board by following **[these steps](https://hackmd.io/@lnu-iot/By5ZUqvOq#Mac-OS)**. 
+
+Once you've flashed the firmware to your ESP32 board, continue by installing Atom IDE. Once done, you should now install PlatformIO to your IDE, you can install it following this **[link](https://platformio.org/install/ide?install=atom)**. Start by opening the Atom Package Manager, from there you should search for the official **platformio-ide** package, proceed by installing it. 
+
+**Once installed, you should have it as shown below in the platforms section:**
+![This is an image](https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/e1006429af41bd588cc85cbe7b64677765c2b84f/assets/board-PlatformIO.png)
+
+Now you can start by creating a project from PlatformIO once all the steps above are completed. This will give you the required structure for this project. PlatformIO gives you the facility of detecting all possible devices connected to your computer directly from the IDE, however, depending on the board and the OS you are using, you might need to configure the port manually. For this you need to go to your *platform.ini* file, from there, make sure the .ini file is set with the port of your device, in my case, as I am using MacOS, my port will likely look different from yours. 
+
+the *platform.ini* file should look moreless like this: 
+
+```
+[env:esp-wrover-kit]
+platform = espressif32
+board = esp-wrover-kit
+framework = arduino
+build_flags = -DBOARD_HAS_PSRAM -mfix-esp32-psram-cache-issue
+upload_port = /dev/cu.wchusbserial1410
+lib_deps = 
+	alexgyver/EncButton@^1.12
+	gyverlibs/TimerMs@^1.1.1
+	makuna/NeoPixelBus@^2.7.0
+	knolleary/PubSubClient@^2.8
+board_build.partitions = huge_app.csv
+```
+**NOTE:** *make sure the board and upload port are correct, depending on your board and the USB port you are using.*
+
+ The *lib_deps* section should be empty, as you have not installed any libraries yet. If you have not installed any platform yet, do so by going to the *platforms* section of PlatformIO and from there download Espressif 32. If you are using the Freenove ESP32 board recommended for this project, you will need to search for the *esp-wrover-kit* board and from there you can download it. 
+ 
+ 
+You can start by uploading dummy code just to make sure the PIO upload works as it should, additionally, this process should be done with your device connected at all times, so the port can be visible in the IDE and during the upload process as well. 
+
+
+
+
+
+
+
+
+
+installing plugins in your favorite editor. How flashing is done on MicroPython. The aim is that a beginner should be able to understand.
+
+
 - [ ] How the code is uploaded
 - [ ] Steps that you needed to do for your computer. Installation of Node.js, extra drivers, etc.
 
