@@ -38,32 +38,8 @@ Overall, this is the complete list of materials that you will need:
 All material was bought in Amazon and come in the Freenove Ultimate starter Kit, with additional components if you are willing to scale up your project. The total cost is *499.00 kr* without shipping included. 
 Link here: [Freenove Ultimate starter kit](https://www.amazon.se/Freenove-Ultimate-ESP32-WROVER-Included-Compatible/dp/B08FM2NCST/ref=asc_df_B08FM2NCST/?tag=shpngadsglede-21&linkCode=df0&hvadid=476555136704&hvpos=&hvnetw=g&hvrand=16805966142249198589&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062383&hvtargid=pla-1072775098961&psc=1)
 
-**Image of all components**
-
-(/assets/images/electrocat.png)
-
-
-
-
-
-Explain all material that is needed. All sensors, where you bought them and their specifications. Please also provide pictures of what you have bought and what you are using.
-
-- [ ] List of material
-- [ ] What the different things (sensors, wires, controllers) do - short specifications
-- [ ] Where you bought them and how much they cost
-
-
-&gt; Example:
-&gt;| IoT Thing | For this         |
-&gt;| --------- | ---------------- |
-&gt;| Perhaps   | a table          |
-&gt;| is a      | jolly good idea? |
-&gt;
-&gt;In this project I have chosen to work with the Pycom LoPy4 device as seen in Fig. 1, it&#39;s a neat little device programmed by MicroPython and has several bands of connectivity. The device has many digital and analog input and outputs and is well suited for an IoT project.
-&gt;
-&gt;![LoPy!](https://pycom.io/wp-content/uploads/2018/08/lopySide-1.png =360x)
-&gt;Fig. 1. LoPy4 with headers. Pycom.io
-
+**Image of all components:**
+![This is an image](https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/c303aae921dd7d84778a07a3f3913afaae76e745/assets/Part%20list.png)
 
 ### Computer setup
 
