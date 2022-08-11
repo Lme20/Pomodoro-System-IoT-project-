@@ -4,7 +4,7 @@ Louis Mercier - lm223ei
 
 If you've ever struggled with productivity, missed a deadline, or ended up distracted too many times, then this project might be for you. There are countless techniques claiming to boost productivity and while many may work to varying degrees, there's no denying that Pomodoro takes the first spot. 
 
-Pomodoro, meaning "Tomato" in Italian, is a very simple and consize technique based purely on how you distribute your time. The technique consists of time intervals, where you may only work for 25 minutes followed by a 5 minutes pause, totalling 30 minutes, this routine is then repeated and a new set is followed. This project is purely aimed at creating a device that allows you to follow this technique, with as little distractions as possible, without having to use a a Pomodoro timer online. Now, you may ask, why use a device when I can simply use a timer on my phone? Well, we know that phones are a distraction, besides, this device allows you to track all your passes, getting a better overview of how productive you've been. 
+Pomodoro, meaning "Tomato" in Italian, is a very simple and consize technique based purely on how you distribute your time. The technique consists of time intervals, where you may only work for 25 minutes followed by a 5 minutes pause, totalling 30 minutes, this routine is then repeated and a new set is followed. This project is purely aimed at creating a device that allows you to follow this technique, with as little distractions as possible, without having to use a a Pomodoro timer online. Now, you may ask, why use a device when I can simply use a timer on my phone? Well, we know that phones are a distraction, besides, this device allows you to track all your sets, getting a better overview of how productive you've been. 
 
 This project may take between 15 to 30 hours, depending on the complexity you're aiming and any addons you might want for this project (assuming you're not copypasting the entirety of the code). Additionaly, the coding phase may take up only 40% of the project, with the rest being left to the setup of your device and any issues that may come. Consider that this project may not be straightforward, as it depends entirely on your ESP board and the components you are using.
 
@@ -19,6 +19,32 @@ While fairly simple, I believe this device can provide insight on the productivi
 ### Material
 
 For this project I've chosen a Freenove ESP32 board, with a GPIO extension board added to it. I've chosen this specific device as it provides all the perks of a generic ESP32 board with the addition of free resources provided by Freenove, additionally, as it comes with an extension board built-in, this specific board makes any kind of setup far easier and less troublesome, with no soldering required and no confusing setup compared to other boards (see pycom expansion boards), I considering this board to be highly beguinner friendly, with a range of tutorials and projects already provided by Freenove for free. As a side note, this board is compatible to the firmware provided by the course, as well as the firmware used in ESP32 boards by Espressif. 
+
+Overall, this is the complete list of materials that you will need: 
+
+- [ ] 1 - Freenove ESP32 board 
+- [ ] 15 - M-M jump wires
+- [ ] 1 - RGB led light
+- [ ] 1 - Push button
+- [ ] 1 - PNP transistor 8550
+- [ ] 3 - 220 Ω resistors*
+- [ ] 2 - 10K Ω resistors*
+- [ ] 1 - 1K Ω resistor*
+- [ ] 1 - Active buzzer
+- [ ] 1 - Breadboard
+
+* *Make sure to calculate the resistor values you need before using them as these may differ depending on your circuit.*
+
+All material was bought in Amazon and come in the Freenove Ultimate starter Kit, with additional components if you are willing to scale up your project. The total cost is *499.00 kr* without shipping included. 
+Link here: [Freenove Ultimate starter kit](https://www.amazon.se/Freenove-Ultimate-ESP32-WROVER-Included-Compatible/dp/B08FM2NCST/ref=asc_df_B08FM2NCST/?tag=shpngadsglede-21&linkCode=df0&hvadid=476555136704&hvpos=&hvnetw=g&hvrand=16805966142249198589&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9062383&hvtargid=pla-1072775098961&psc=1)
+
+**Image of all components**
+
+(/assets/images/electrocat.png)
+
+
+
+
 
 Explain all material that is needed. All sensors, where you bought them and their specifications. Please also provide pictures of what you have bought and what you are using.
 
