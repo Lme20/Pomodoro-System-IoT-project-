@@ -1,3 +1,6 @@
+
+![This is an image](https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/f86371c9b4bdf22f5f9890022145c29f06fab050/assets/pomodoroLogo.png)
+
 ## Pomodoro tracking system - Tutorial
 
 Louis Mercier - lm223ei
@@ -51,9 +54,6 @@ First of all, you will need to flash the required firmware to your ESP32 board, 
 
 Once you've flashed the firmware to your ESP32 board, continue by installing Atom IDE. Once done, you should now install PlatformIO to your IDE, you can install it following this **[link](https://platformio.org/install/ide?install=atom)**. Start by opening the Atom Package Manager, from there you should search for the official **platformio-ide** package, proceed by installing it. 
 
-**Once installed, you should have it as shown below in the platforms section:**
-![This is an image](https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/e1006429af41bd588cc85cbe7b64677765c2b84f/assets/board-PlatformIO.png)
-
 Now you can start by creating a project from PlatformIO once all the steps above are completed. This will give you the required structure for this project. PlatformIO gives you the facility of detecting all possible devices connected to your computer directly from the IDE, however, depending on the board and the OS you are using, you might need to configure the port manually. For this you need to go to your *platform.ini* file, from there, make sure the .ini file is set with the port of your device, in my case, as I am using MacOS, my port will likely look different from yours. 
 
 the *platform.ini* file should look moreless like this: 
@@ -75,23 +75,11 @@ board_build.partitions = huge_app.csv
 **NOTE:** *make sure the board and upload port are correct, depending on your board and the USB port you are using.*
 
  The *lib_deps* section should be empty, as you have not installed any libraries yet. If you have not installed any platform yet, do so by going to the *platforms* section of PlatformIO and from there download Espressif 32. If you are using the Freenove ESP32 board recommended for this project, you will need to search for the *esp-wrover-kit* board and from there you can download it. 
- 
+
+**Once installed, you should have it as shown below in the platforms section:**
+![This is an image](https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/e1006429af41bd588cc85cbe7b64677765c2b84f/assets/board-PlatformIO.png)
  
 You can start by uploading dummy code just to make sure the PIO upload works as it should, additionally, this process should be done with your device connected at all times, so the port can be visible in the IDE and during the upload process as well. 
-
-
-
-
-
-
-
-
-
-installing plugins in your favorite editor. How flashing is done on MicroPython. The aim is that a beginner should be able to understand.
-
-
-- [ ] How the code is uploaded
-- [ ] Steps that you needed to do for your computer. Installation of Node.js, extra drivers, etc.
 
 ### Putting everything together
 
