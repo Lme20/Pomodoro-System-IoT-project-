@@ -85,17 +85,15 @@ You can start by uploading dummy code just to make sure the PIO upload works as 
 
 ![This is an image](https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/192c416b52e20fab869704951836ff95480a2160/assets/sketch_pomodoro_bb.png)
 
-All GPIO connections are made in pin 13, 15, 2, 4 and 21 whereas 15, 2, 4 are exclusively related to the RBG led light. The extension board allows for a well connected breadboard which makes the setup process easier to manage. 
+All GPIO connections are made in pins 13, 15, 2, 4 and 21 whereas 15, 2, 4 are exclusively related to the RBG led light. The extension board allows for a well connected breadboard which makes the setup process easier to manage. Additionally, the push button is connected to GPIO 21 using a series of 2 10K Ω resistors. Finally, the buzzer is connected to GPIO 13 and makes use of 1 PNP 8550 transistor as well as 1K Ω resistor for the current circuit. Concerning the current RGB light, it is composed of 4 pins: the long pin (1) is the common port, that is, 3 LED 's positive or negative port. All pins except the common port are connected to GPIO 15, 2 and 4 respectively. Overall, I consider the current circuit to be fairly simple to develop, keep in mind that it is only possible with an extension board in its current state. 
 
+Concerning the resistors, these are not set values and should be calculated on their own following your own setup, this step can be done by calculating the following formula: 
 
+*Resistor = (Battery Voltage – LED voltage) / desired LED current.*
 
-- How is all the electronics connected? 
-- Describe all the wiring, 
-- Be specific on how to connect everything, 
-- what to think of in terms of resistors, current and voltage.
-- Is this only for a development setup or could it be used in production?
+This process should also be done with the buzzer, to obtain the desired amount for the resistors and avoid any issues concerning the aforementioned components. I personally believe this phase of the project could be improved if I dedicate more time to the circuit itself, as I've encountered several issues even during the wiring process, including wrong color values for the RGB led light, and a buzzer that would simply not respond even after pressing the button. 
 
-- [ ] *Electrical calculations
+I do not consider this project usable for production, as it still has room for wiring improvements, a possible redo of the pins and an in-depth overview of electrical calculations, including schematics. This circuit should be considered a prototype and therefore only for a development seup. 
 
 ### Platform
 
