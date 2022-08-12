@@ -127,12 +127,6 @@ If all steps above were done correctly, your terminal should look as follows:
 
 <img src="https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/3e51fac69722afed5ea5a8f8ae69b27344a430b3/assets/Node-red.png" width="550"> 
 
-
-Is your platform based on a local installation or a cloud? Do you plan to use a paid subscription or a free? Describe the different alternatives on going forward if you want to scale your idea.
-
-- [ ] Describe platform in terms of functionality
-- [ ] *Explain and elaborate what made you choose this platform 
-
 ### The code
 
 Import core functions of your code here, and don&#39;t forget to explain what you have done! Do not put too much code here, focus on the core functionalities. Have you done a specific function that does a calculation, or are you using clever function for sending data on two networks? Or, are you checking if the value is reasonable etc. Explain what you have done, including the setup of the network, wireless, libraries and all that is needed to understand.
