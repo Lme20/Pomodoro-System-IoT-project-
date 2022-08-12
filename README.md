@@ -3,6 +3,8 @@
 
 ## Pomodoro tracking system - Tutorial
 
+-------- TUTORIAL IN PROGRESS - NOT FINISHED YET --------
+
 Louis Mercier - lm223ei
 
 If you've ever struggled with productivity, missed a deadline, or ended up distracted too many times, then this project might be for you. There are countless techniques claiming to boost productivity and while many may work to varying degrees, there's no denying that Pomodoro takes the first spot. 
@@ -93,7 +95,7 @@ Concerning the resistors, these are not set values and should be calculated on t
 
 This process should also be done with the buzzer, to obtain the desired amount for the resistors and avoid any issues concerning the aforementioned components. I personally believe this phase of the project could be improved if I dedicate more time to the circuit itself, as I've encountered several issues even during the wiring process, including wrong color values for the RGB led light, and a buzzer that would simply not respond even after pressing the button. 
 
-I do not consider this project usable for production, as it still has room for wiring improvements, a possible redo of the pins and an in-depth overview of electrical calculations, including schematics. This circuit should be considered a prototype and therefore only for a development seup. 
+I do not consider this project usable for production, as it still has room for wiring improvements, a possible redo of the pins and an in-depth overview of electrical calculations, including schematics. This circuit should be considered a prototype and therefore only for a development setup. 
 
 ### Platform
 
