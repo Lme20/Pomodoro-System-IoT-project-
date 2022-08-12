@@ -25,6 +25,8 @@ While fairly simple, I believe this device can provide insight on the productivi
 
 For this project I've chosen a Freenove ESP32 board, with a GPIO extension board added to it. I've chosen this specific device as it provides all the perks of a generic ESP32 board with the addition of free resources provided by Freenove, additionally, as it comes with an extension board built-in, this specific board makes any kind of setup far easier and less troublesome, with no soldering required and no confusing setup compared to other boards (see pycom expansion boards), I considering this board to be highly beguinner friendly, with a range of tutorials and projects already provided by Freenove for free. As a side note, this board is compatible to the firmware provided by the course, as well as the firmware used in ESP32 boards by Espressif. 
 
+###### List of Materials
+
 Overall, this is the complete list of materials that you will need: 
 
 - [ ] 1 - Freenove ESP32 board 
@@ -50,7 +52,8 @@ Link here: [Freenove Ultimate starter kit](https://www.amazon.se/Freenove-Ultima
 
 For this project I've stuck with Atom IDE, as it provides all the necessary plugins for this project. You should first start by installing Atom IDE if you haven't already. 
 
-#### Flashing the firmware and required setup
+###### Flashing the firmware and required setup
+
 
 First of all, you will need to flash the required firmware to your ESP32 board, for this you will need to access this **[website](https://nabucasa.github.io/esp-web-flasher/)** and download the specified **[firmware](https://github.com/H-Ryan/Heltec/blob/main/PyCom%20MicroPython/Heltec%20PyCom%20MicroPython.zip?raw=trueS)** in your computer, do this by first connecting your ESP32 board to your computer (use the USB cable provided in the kit), make sure your computer detects the board by following **[these steps](https://hackmd.io/@lnu-iot/By5ZUqvOq#Mac-OS)**. 
 
@@ -99,7 +102,31 @@ I do not consider this project usable for production, as it still has room for w
 
 ### Platform
 
-Describe your choice of platform. If you have tried different platforms it can be good to provide a comparison.
+My choice of platform is Node-Red, a flow-based development tool for visual programming used extensively for wiring together hardware devices, among other IoT aspects. Node-RED provides a web browser-based flow editor, which facilitates the visualisation process of wiring toghether data flows from a node to another far more easier, additionally, this platfrm is free to use and provides all the functionalities required for this project. This felt like an easy choice as Node-Red is naturally used for MQTT connectivity, additionally, this platform is by far the best option for projects of this size, even though with its limited scalability I do not consider this device to require increased scalability even for production. 
+
+Initially, I figured that using an online service would provide all the required functionalities for this project, this took me to IFTTT, but early development without a visualizer and the lack of a messaging protocol made its use difficult to implement, furthermore, I noticed how using online platforms can be quite limiting, especially if those come with limited scalability and a paying option, considering that such platforms would make implementation difficult, as this project does not use any sensors, hence, the lack of obtaining any straightforward data. 
+
+###### Installation of Node-Red
+
+For Mac users, the installation can be done through the terminal, we'Il need this process to visualise connectivity with MQTT later on. **Make sure to have Node.js installed as a prerequisite of this phase**
+
+Insert the following command into your terminal:
+```
+sudo npm install -g --unsafe-perm node-red
+```
+Once done, your terminal should show the following input: 
+```
++ node-red@1.1.0
+added 332 packages from 341 contributors in 18.494s
+found 0 vulnerabilities
+```
+Now you can start Node-red by simply inserting *Node-red* to the terminal. This step should automatically give you access to data-flow visualiser at http://127.0.0.1:1880/  
+*NOTE: this step will only allow you to run in local mode.*
+
+If all steps above were done correctly, your terminal should look as follows:
+
+<img src="https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/3e51fac69722afed5ea5a8f8ae69b27344a430b3/assets/Node-red.png" width="550"> 
+
 
 Is your platform based on a local installation or a cloud? Do you plan to use a paid subscription or a free? Describe the different alternatives on going forward if you want to scale your idea.
 
