@@ -129,7 +129,47 @@ If all steps above were done correctly, your terminal should look as follows:
 
 ### The code
 
-Import core functions of your code here, and don&#39;t forget to explain what you have done! Do not put too much code here, focus on the core functionalities. Have you done a specific function that does a calculation, or are you using clever function for sending data on two networks? Or, are you checking if the value is reasonable etc. Explain what you have done, including the setup of the network, wireless, libraries and all that is needed to understand.
+The code for this device is fairly straightforward, let's begin by presenting the libraries you will need: 
+```
+#include <EncButton.h> // https://github.com/GyverLibs/EncButton
+#include <TimerMs.h> // https://github.com/GyverLibs/TimerMs
+#include <HTTPClient.h> //included for the google sheets connection
+#include <WiFiClient.h> //WiFi setup and client
+#include <PubSubClient.h> //run MQTT
+
+```
+###### EncButton library 
+
+This library is only used to controll the push button and manage any inputs from it, its use is pretty much restricted towards any methods used in the code that includes extracting functions from the EncButton library. 
+
+###### TimerMs library 
+
+This library allows for extracting necessary functions for the cases included in our code, these are exclusively used for our case switch statements and are declared in our Variable Declaration section of the code. This library serves as a  multifunctional software timer based on the millis() system timer seen in Arduino, and as you might have noticed, this project is heaviliy based on Arduino platforms. 
+
+###### WiFiClient and HTTPClient library 
+
+The WiFi and HTTPClient libraries are basically what allows us to connect our device to internent, without these there is no way we would be able to create an MQTT connection or be able to transmit data towards Google Sheets. Additionally, these might be required for furthered scalability in our project, mainly for transmitting data towards cloud or online services. These are important to connect to our specified internet IP address and port as defined in the client designated for this device. 
+
+###### PubSubClient library 
+
+This library is only for MQTT messaging and will be required when installing MQTT for this project. 
+
+###### Core functionalities
+
+[You can find the code here for more insight.](link)
+
+Apart from the declaration of libraries which I specified above, the code comes divided into various sections. First we start with the setup, this section is quite obvious and includes setting up the pins of the device, network credentials, setting the MQTT connection, declaring methods and setting values for the timer and RGB led lights. I will omit most of it as I will present this part of the code later on in section [Transmitting the data / connectivity](https://github.com/Lme20/Pomodoro-System-IoT-project-#transmitting-the-data--connectivity).
+
+
+The project makes use of a case switch systems which allows us to switch into various states during a loop, this will facilitate the process of giving our components their functions based on the state they are in, this includes the various RGB light "states" such as blink and colors as well as if the buzzer is active or not, this also allows us to dedicate specific functions based on each case found in the code. In total, there are 4 cases 
+
+- Import core functions of your code here, 
+ - don't forget to explain what you have done! 
+- Do not put too much code here, 
+- focus on the core functionalities. 
+- Have you done a specific function that does a calculation, or are you using clever function for sending data on two networks?
+-  are you checking if the value is reasonable etc. 
+-  Explain what you have done, including the setup of the network, wireless, libraries and all that is needed to understand.
 
 
 ```python=
