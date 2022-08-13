@@ -156,34 +156,111 @@ This library is only for MQTT messaging and will be required when installing MQT
 
 ###### Core functionalities
 
-[You can find the code here for more insight.](link)
+[You can find the complete code here for more insight.](link)
 
-Apart from the declaration of libraries which I specified above, the code comes divided into various sections. First we start with the setup, this section is quite obvious and includes setting up the pins of the device, network credentials, setting the MQTT connection, declaring methods and setting values for the timer and RGB led lights. I will omit most of it as I will present this part of the code later on in section [Transmitting the data / connectivity](https://github.com/Lme20/Pomodoro-System-IoT-project-#transmitting-the-data--connectivity).
+Apart from the declaration of libraries which I specified above, the code comes divided into various sections. First we start with the setup, this section is quite obvious and includes setting up the pins of the device, network credentials, setting the MQTT connection, declaring methods and setting values for the timer and RGB led lights. I will omit most of it as I will present this part of the code later on in [Transmitting the data / connectivity](#transmitting-the-data--connectivity) section.
 
+Here are the declared values for time intervals and blinking speed (RGB lights):
+```
+const int LED_SPEED_MS = 700; // led blinking speed
 
-The project makes use of a case switch systems which allows us to switch into various states during a loop, this will facilitate the process of giving our components their functions based on the state they are in, this includes the various RGB light "states" such as blink and colors as well as if the buzzer is active or not, this also allows us to dedicate specific functions based on each case found in the code. In total, there are 4 cases 
+const uint32_t WORK_T_MS = 1500000; // work time 25 min
+const uint32_t REST_T_MS = 300000; // rest time 5 min
+const uint32_t LONG_REST_T_MS = 1200000; // long rest 20 min
+```
+And here I've included all the declared states for the case switches: 
+```
+int ledState = 0; // 0 - off, 1 - on, 2 - blinking
 
-- Import core functions of your code here, 
- - don't forget to explain what you have done! 
-- Do not put too much code here, 
-- focus on the core functionalities. 
-- Have you done a specific function that does a calculation, or are you using clever function for sending data on two networks?
--  are you checking if the value is reasonable etc. 
--  Explain what you have done, including the setup of the network, wireless, libraries and all that is needed to understand.
-
-
-```python=
-import this as that
-
-def my_cool_function():
-    print(&#39;not much here&#39;)
-
-s.send(package)
-
-# Explain your code!
+int state = 0; // 0 - pause, 1 - work, 2 - work end, 3 - rest, 4 - rest end
 ```
 
+The project makes use of a case switch systems which allows us to switch into various states during a loop, this will facilitate the process of giving our components their functions based on the state they are in, this includes the various RGB light "states" such as blink and colors as well as if the buzzer is active or not, this also allows us to dedicate specific functions based on each case found in the code. In total, there are 5 cases: Pause, Work, Work end, Rest and Rest end. For the sake of simplicity I will only include 2 cases in the code below. 
 
+```c++=
+  // CASE 0 - PAUSE
+  switch (state) {
+    case 0: // pause
+      if (initState) {
+        setCurLed(LED_B_PIN); //B
+        setLedState(2); //BLINK
+        initState = false;
+
+        client.publish(TOPIC, "PAUSE");
+        Serial.println((String)TOPIC + " => PAUSE");
+      }
+      if (btn.release()) {
+        beepClick();
+        setState(1); // WORK
+      }
+      break;
+    //-----------------------------------
+    // CASE 1 - WORK
+    case 1: // work
+      if (initState) {
+        initState = false;
+
+        setCurLed(LED_R_PIN);
+        setLedState(1); // ON
+
+        client.publish(TOPIC, "WORK");
+        Serial.println((String)TOPIC + " => WORK");
+
+        mainTmr.setTime(WORK_T_MS);
+        mainTmr.start();
+      }
+      if (mainTmr.tick()) setState(2);
+      if (btn.release()) {
+        beepClick();
+        setState(0); //PAUSE
+      }
+      break;
+  }
+```
+
+The case switches in the code above includes various sections which set the various states declared in the Variables sections for both the buzzer and RGB lights, these also include the data which will serve to publish input through the MQTT as well as the Topic. Our code works in a way where once you've pressed the push button, the device switches to a new case, when this occurs 3 things happen: An input from the device is published in Google sheet (time and states), the RGB lights switch to a specific color and the buzzer may stop. During all of these cases, a timer will be counting depending on which state you are in. 
+
+Here is an overview of how each state works:
+
+- 🔵 ⚪️ 🔵 ⚪️ [blinking blue] - PAUSE: Once pressing the button you will go to WORK mode. 
+- 🔴 🔴 🔴 🔴 [red] - WORK: you have 25 minutes to work on your task. If you press the button you switch to PAUSE mode and the timer will reset.
+- 🔴 ⚪️ 🔴 ⚪️ [blinking red] - NEED REST: current working period is finished, you need to take a rest. But you can still continue working until you press the button.
+- 🟢 🟢 🟢 🟢 [green] - REST: you have 5 minutes for to rest. After 4 pomodoro periods you'll have a long rest of 20 min. If you click a button before rest is finished, you will go to WORK mode.
+- 🟢 ⚪️ 🟢 ⚪️ [blinking green] - REST END: you have to go back to work, but it won't start until you press the button.
+
+As for the buzzer, it functions with 3 states depending on which mode it is in: 
+```
+//BUZZER
+void beepClick() {
+  beep(1, 50, 0);
+}
+
+void beepEnd() {
+  beep(2, 100, 0);
+}
+
+void beepLongRest() {
+  beep(3, 300, 0);
+}
+```
+Concerning the RGB lights, an If-statement is used to control each of its states:
+```
+  // led control
+  if (ledTmr.tick()) {
+    switch (ledState) {
+      case 0:
+        if (ledOn)ledSwitch(false);
+        break;
+      case 1:
+        if (!ledOn) ledSwitch(true);;
+        break;
+      case 2:
+        ledSwitch(!ledOn);
+        break;
+    }
+  }
+```
+Lastly, a set of Void methods are used to control the RGB modes and states already mentioned, these are used in the case switches once for each of the 5 states. 
 
 ### Transmitting the data / connectivity
 
