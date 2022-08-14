@@ -336,6 +336,11 @@ By making use of MQTT and Node-red we will be able to send data whenever the pus
 
 ### Presenting the data
 
+The project does not come with a dashboard per definition but I made use of Google sheets instead to present the data, most dashboards from various protocols require a defined set of "inputs" which are better adjusted to projects with sensors, I've instead decided to go for a spreadsheet as the data obtained does not require actual "measurements" and is only meant to provide insight to its user. I believe, however, that with some more exploring a dashboard could be implemented to make the data more intuitive. 
+
+The data is meant to be preserved in the Google sheet as long as the user needs it to. A possible 
+
+
 Describe the presentation part. How is the dashboard built? How long is the data preserved in the database?
 
 - [ ] Provide visual examples on how the dashboard looks. Pictures needed.
