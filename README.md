@@ -340,13 +340,43 @@ The project does not come with a dashboard per definition but I made use of Goog
 
 The data is meant to be preserved in the Google sheet as long as the user needs it to. A possible functionality could be added where the user has the chance to save the sheet beforee starting a new pass, however, as the project currently stands, the sheet only saves the data whether or not the user started a new pass, making no difference between passes that may be days old with new ones. 
 
+First, there is a specific setup in Node-Red that must be done to obtain the data into Google sheets, after following the steps found in [Transmitting the data / connectivity](#transmitting-the-data--connectivity), you should now create a third node in the Node-Red window with the sequence node "Join", you might want to set the timout to 5 seconds after every message. Now we can proceed to Google sheets, in order to do so, you will need to create a Google forms containing 1 question "Mode" and make it a short answer, the form should look as follows: 
 
-Describe the presentation part. How is the dashboard built? 
+<img src="https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/7800f2ac5ae54be0458d4c533b4974d3625b5cb2/assets/Google_forms.png" width="550"> 
 
-- [ ] Provide visual examples on how the dashboard looks. Pictures needed.
-- [ ] *Explain your choice of database.
-- [ ] *Automation/triggers of the data.
+Following this step you should now get a "pre-filled link" from the 3 dots in the forms, this will bring you to an overview of your forms, once done you will need to insert some "dummy" data into the formulaire and click "get link", this will give you a link needed for the next step. The link will look as follows:
 
+```
+https://docs.google.com/forms/d/e/1FAIpQLSdPg9tLqITqlvg8Gfgd9xisgHvTfyPVJbBirfySXSbCvh4Fnw/viewform?usp=pp_url&entry.1828283323=PAUSE
+```
+You can replace */viewform?usp=pp_url&* with */formResponse?* and proceed by changing
+```
+entry.1828283323=PAUSE
+```
+With the Topic of used in our Node-Red server/MQTT server: 
+```
+entry.1828283323={{payload.timer/pomodoro}}
+```
+Our now modified link should look like this:
+
+```
+https://docs.google.com/forms/d/e/1FAIpQLSdPg9tLqITqlvg8Gfgd9xisgHvTfyPVJbBirfySXSbCvh4Fnw/formResponse?entry.1828283323={{payload.timer/pomodoro}}
+```
+Now you can proceed by creating a new node in our Node-Red window with an "http request", make sure to attach this node to the "join" node and modify the URL section with the link above. Now you can press "Deploy" and observe how our Google forms is updated in real time. 
+
+The final structure of our Node-Red server will look like this: 
+
+<img src="https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/d3326c1c74223de8304a00655827fbd485049a92/assets/Node-red_dataFlow.png" width="550"> 
+
+We only need 1 Topic as the simplicity of our data does not require any specific category, this process also allows us to obtain a timestamp every time the Google forms is filled, which are the only 2 inputs we will need from the device. The data flow is fairly simple and leaves plenty of room for scalability and/or any improvements and new functionalities to this project. 
+
+Now as a last step to this tutorial, you can create the Google sheet that I've mentioned by clicking on the Google sheet icon found in the "responses" section of our Google forms, I recommend creating a new sheet altogether. This will create the Google sheet we need to present the data: 
+
+<img src="https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/f2aea971c07b5dfe7b98587d1cbd36c7fc9bd38a/assets/Google_sheet_data.png" width="550"> 
+
+I have done some changes to the sheet to better fit the aesthetic of this project, but you should see your sheet filled with a "timestamp" and "Mode" section with the data that was obtained from the steps above, if you have pressed the button to test and/or obtain any data to the Google forms. 
+
+This choice of format for the database might be practical but becomes limitating if you require automatisation, furthermore, I believe the might be better services that provide all of the needs of this project in only one platform, but I believe that this is enough to give insight on how MQTT works and a basic understanding of how to connect a device to WiFi. The data itself can always be improved by adding new Topics that might fulfill the needs of the user, this could be done by creating a new topic in the code and a MQTT node in Node-Red with all the required data to publish. A good addition to this sheet might be the use of graphs to present the data in a more intuitive way. 
 
 ### Finalizing the design
 
