@@ -264,16 +264,75 @@ Lastly, a set of Void methods are used to control the RGB modes and states alrea
 
 ### Transmitting the data / connectivity
 
-https://blog.particle.io/particle-pomodoro-an-internet-connected-pomodoro-timer/
+For this specific aspect of the project I've chosen to use WiFi as the wirless protocol, this deicison was mostly based on the fact that the device is meant to use the local network and shouldn't require long-range communication. Additionally, other technical aspects such as power consumption or low-latency were not of any concern, as the device depends on the computer it is connected to and does not transmit a high volume of data at all. WiFi connections is also backed by a variety of sources and tutorials which makes it fit for a beginner's project. 
 
-How is the data transmitted to the internet or local server? Describe the package format. All the different steps that are needed in getting the data to your end-point. Explain both the code and choice of wireless protocols.
+In the code, the needed credentials for the local network are given, this includes the setup of the MQTT client and the Topic: 
+```
+//NETWORK CREDENTIALS - MQTT
+const char *ssid_Router     = "*******"; // router name
+const char *password_Router = "**********"; // router password
 
+const char *ID = "Pomodoro_TIMER"; //Name of device
+const char *TOPIC = "timer/pomodoro";  // Topic to subcribe to
 
-- [ ] How often is the data sent? 
-- [ ] Which wireless protocols did you use (WiFi, LoRa, etc ...)?
-- [ ] Which transport protocols were used (MQTT, webhook, etc ...)
-- [ ] *Elaborate on the design choices regarding data transmission and wireless protocols. That is how your choices affect the device range and battery consumption.
+char mqtt_server[] = "192.168......"; // IP address here 
 
+WiFiClient TimerNET;
+PubSubClient client(TimerNET); // Setup MQTT client
+```
+All of these are required if you are chosing a WiFi connection with MQTT, furthermore you will need to install Mosquitto to be able to setup an MQTT server, for this you will need to install through the terminal: 
+```
+brew install mosquitto
+```
+**NOTE: I highly recommend to make use of homebrew in order to be able to use the command above**
+
+Now, you can test your MQTT server by entering the following command in a new window in yout terminal:
+```
+mosquitto_sub -d -t test
+```
+You can proceed by entering the following command in another window:
+```
+mosquitto_pub -d -t test -m "Hello world"
+```
+If your MQTT server is correctly set, you should be able to see the input "Hello World" in the window where you entered your first command. 
+
+Do not forget to designate an **ID** and **TOPIC** in the code for your device and MQTT, this is required for any connection made through MQTT. 
+
+Since MQTT will serve as our messaging protocol, we will make use of Node-red in order to publish MQTT messages directly to our Node-Red server, for this you will need to set up an MQTT node directly in our Node-Red window (mqtt://127.0.0.1:1883). From there you should double-click the node and insert "127.0.0.1" as your default server address. Before deploying anything in Node-Red you will need to do some modifications to your MQTT file.
+
+As you've already installed MQTT (assuming you're using the latest version), the server itself will deploy in local mode, thus, we will need to edit the MQTT config file in order to change this, otherwise you won't be able to use your local network's IP address properly to connect to the MQTT server. 
+
+The path to this file looks as follows: 
+```
+/usr/local/etc/mosquitto.conf
+```
+
+Make sure to open the *mosquitto.conf* file in a notepad, once done, you will need to edit the file by changing the **Listeners** section with the following:
+```
+listener 1883 0.0.0.0
+```
+Make sure there are not Hash symbols in the lines you edit. 
+
+Now in the **Security** section of the file, you will need to change *allow_anonymous* from "false" to "true" and remove the hash symbol. This should allow you to start the MQTT server without local mode. 
+
+If all these steps are done correctly, you will need to restart your MQTT server by using the *control + c* command and closing the window, in a new window you should insert the following: 
+
+```
+/usr/local/sbin/mosquitto -v -c /usr/local/etc/mosquitto/mosquitto.conf
+```
+Make sure the command contains the actual path to your mosquitto.conf file. If all these steps were done correcly, you will see the following in your terminal: 
+
+<img src="https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/a8aab21b51bd5b859db379a27b780ff3273508c3/assets/mosquitto.png" width="550"> 
+
+*Notice how there is no local mode message shown.*
+
+Once all these steps are done, you should be able to deploy your MQTT node in Node-Red with the IP address 127.0.0.1, make sure it is also set in port 1883 (default port). Finally, you can create a debug node in your Node-Red window to test connectivity and input, if all done correctly, the input should be shown in the debug window:
+
+<img src="https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/e71cfa8ee1400021b1b88058c10a91fc9f629ccd/assets/Debug_window.png" width="250"> 
+
+To create the input simply connect your device (if not connected already) and push the push button in various modes, make sure it is connected to the WiFi and MQTT before doing so. 
+
+By making use of MQTT and Node-red we will be able to send data whenever the push button is pressed, the objective is to capture the data free of time constraints as we aren't making use of sensors, thus, the data should be allowed to be sent so long it is created. The device is directly powered by the computer and does not require batteries so energy consumption is not a concern, in addition, the use of WiFi seemed obvious as the device does not require long-range connectivity or low-latency, furthermore, the use of MQTT as a transports protocol makes the creation of data from the device far easier as the device does not rely on sensors to obtain data but instead makes use of actuators. This was a challenge when making design choices as I wasn't sure how to create this "data",  MQTT provided the needed functions directly from the *PubSubClient* library which made the whole process straightforward. The data provided from the device is by itself lightweight and thus makes latency easy to manage, this made MQTT an even better option for this project. 
 
 ### Presenting the data
 
