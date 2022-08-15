@@ -4,8 +4,6 @@
 #include <WiFiClient.h> //WiFi setup and client
 #include <PubSubClient.h> //run MQTT
 
-
-
 //---------------------------SETUP-------------------------------------
 //PINS
 const int LED_R_PIN = 15; // 15
@@ -26,13 +24,6 @@ char mqtt_server[] = "192.168....."; //127.0.0.1
 WiFiClient TimerNET;
 PubSubClient client(TimerNET); // Setup MQTT client
 
-//const char *ssid_Router     = "Tele2_2f0b77"; //Enter the router name
-//const char *password_Router = "kjzyigm2"; //Enter the router password
-
-//GOOGLE_DEPLOYMENT_ID
-//String GOOGLE_SCRIPT_ID = "AKfycbwl7IIFzeYER7lRy548YceLryCROo0orksMMokBQzCdGP-JVci0At6oJKd5i7igQxw"; //google deployment ID
-//const int sendInterval = 2000;
-
 //RECONNECT TO CLIENT
 void reconnect() {
   // Loop until we're reconnected
@@ -52,18 +43,6 @@ void reconnect() {
     }
   }
 }
-
-/***
-void reconnect() {
-  while (!client.connected()) {
-    if (client.connect("TimerNET")) {
-      Serial.println("MQTT Connected");
-      client.subscribe(TOPIC);
-    }
-  }
-}***/
-
-
 
 //EXTRA
 #define R_channel 0
@@ -124,9 +103,6 @@ void setup() {
   pinMode(BUZ_PIN, OUTPUT);
   pinMode(BTN_PIN, INPUT);
 
-  //ledcSetup(R_channel, pwm_Frequency, pwm_resolution);
-  //ledcSetup(G_channel, pwm_Frequency, pwm_resolution);
-  //ledcSetup(B_channel, pwm_Frequency, pwm_resolution);
   //---------------------------------------------------------------------
 }
 
