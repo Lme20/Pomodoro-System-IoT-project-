@@ -15,13 +15,13 @@ const int BUZ_PIN = 13; //
 const int BTN_PIN = 21; //
 
 //NETWORK CREDENTIALS - MQTT
-const char *ssid_Router     = "L-Wifi"; //Enter the router name
-const char *password_Router = "Jennifer05"; //Enter the router password
+const char *ssid_Router     = "*****"; //Enter the router name
+const char *password_Router = "******"; //Enter the router password
 
 const char *ID = "Pomodoro_TIMER"; //Name of device
 const char *TOPIC = "timer/pomodoro";  // Topic to subcribe to
 
-char mqtt_server[] = "192.168.1.76"; //127.0.0.1
+char mqtt_server[] = "192.168....."; //127.0.0.1
 
 WiFiClient TimerNET;
 PubSubClient client(TimerNET); // Setup MQTT client
