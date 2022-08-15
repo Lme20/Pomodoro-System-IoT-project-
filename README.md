@@ -3,8 +3,6 @@
 
 ## Pomodoro tracking system - Tutorial
 
--------- TUTORIAL IN PROGRESS - NOT FINISHED YET --------
-
 Louis Mercier - lm223ei
 
 If you've ever struggled with productivity, missed a deadline, or ended up distracted too many times, then this project might be for you. There are countless techniques claiming to boost productivity and while many may work to varying degrees, there's no denying that Pomodoro takes the first spot. 
