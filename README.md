@@ -50,10 +50,13 @@ Link here: [Freenove Ultimate starter kit](https://www.amazon.se/Freenove-Ultima
 
 ### Computer setup
 
-For this project I've stuck with Atom IDE, as it provides all the necessary plugins for this project. You should first start by installing Atom IDE if you haven't already. 
+For this project I've stuck with Atom IDE, as it provides all the necessary plugins for this project. You should first start by installing Atom IDE if you haven't already. Concerning the USB connection, you will need to install the following driver for your computer to be able to detect it:
+
+**[Install VCP Drivers](https://www.silabs.com/developers/usb-to-uart-bridge-vcp-drivers?tab=downloads)**
+
+This is the only driver you will need for this project, assuming you are using a Mac. 
 
 ###### Flashing the firmware and required setup
-
 
 First of all, you will need to flash the required firmware to your ESP32 board, for this you will need to access this **[website](https://nabucasa.github.io/esp-web-flasher/)** and download the specified **[firmware](https://github.com/H-Ryan/Heltec/blob/main/PyCom%20MicroPython/Heltec%20PyCom%20MicroPython.zip?raw=trueS)** in your computer, do this by first connecting your ESP32 board to your computer (use the USB cable provided in the kit), make sure your computer detects the board by following **[these steps](https://hackmd.io/@lnu-iot/By5ZUqvOq#Mac-OS)**. 
 
@@ -380,8 +383,11 @@ This choice of format for the database might be practical but becomes limitating
 
 ### Finalizing the design
 
-Show the final results of your project. Give your final thoughts on how you think the project went. What could have been done in an other way, or even better? Pictures are nice!
+This is the final setup for this project: 
 
-- [ ] Show final results of the project
-- [ ] Pictures
-- [ ] *Video presentation
+<img src="https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/2f238855c8fa6b0524ac0d4a2d2e98d5b6f237c1/assets/Full_setup.png" width="550"> 
+
+My major constraint was actually time as I initially planned to use a Heltec ESP32 board instead, this did not go according to plan as I failed in soldering the pins correctly, rendering the Heltec board unusable for this project. The original idea was to an LCD screen to create a "countdown" for the timer, a nice addition which would've given some options for new data, this was possible at the time since the original Heltec board did come with a small display screen suited for this purpose. The failure in the soldering step took me back at least 2 weeks of planning, which made my schedule for this project already tight. Another issue which came in the development phase was the coding process itself and the specific structure I could use for this project, as I was unsure about which approach best suited my needs, this also needed defined requirements in order to have a better overview of which functionalities I required and how to apply them. 
+Through testing and research I therefore found that using C++ and PlatformIO better suited my needs as there were far more projects with similar objectives as examples, as well as sources which I could use as a guide. Finally, the wiring process was by itself difficult, not due to the complexity of this project but rather due to inexperience in setting up an IoT device, as well as how to manage resistor values and what pins to use, I found this last phase quite challenging as a lot of the sources I found did not specify simple things such as how the resistors shouldn't "touch" or how to properly use a breadboard, additionally, I found that familiarising with the ESP32 board was crucial in order to create a functional circuit with the correct GPIO pins, without actually "frying" the board or the components themselves. 
+
+I believe this project has a lot of potential and plenty of room for improvements, first, I'd suggest adding an LCD screen for a timer as a useful addition to the device. Perhpas improving the MQTT connection and finding a better service instead of relying on Google sheets could help to automatise the process of obtaining data even further, this coupled with the use of a more intuitive way of presenting such data could make for a far better project. Lastly, I believe that reviewing the current design and all resistor values could vastly improve electrical flow in the device, perhaps making use of schematics and actually visualising the wiring for a better overview could ease this process. For these suggestions the use of wiring diagrams could be quie fitting. 
