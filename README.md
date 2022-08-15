@@ -159,7 +159,7 @@ This library is only for MQTT messaging and will be required when installing MQT
 
 ###### Core functionalities
 
-[You can find the complete code here for more insight.](link)
+[Find the complete code here for more insight](https://github.com/Lme20/Pomodoro-System-IoT-project-/blob/7a2e4175b3490c0cacd258cda2536c7f5dd66eed/pomodoro.ino)
 
 Apart from the declaration of libraries which I specified above, the code comes divided into various sections. First we start with the setup, this section is quite obvious and includes setting up the pins of the device, network credentials, setting the MQTT connection, declaring methods and setting values for the timer and RGB led lights. I will omit most of it as I will present this part of the code later on in [Transmitting the data / connectivity](#transmitting-the-data--connectivity) section.
 
